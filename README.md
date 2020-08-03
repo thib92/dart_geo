@@ -1,7 +1,8 @@
-A library for Dart developers.
+# Dart Geo
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+A library to handle Geo data in Dart.
+
+This library is a port of the excellent Java implementation [davidmoten/geo](https://github.com/davidmoten/geo)
 
 ## Usage
 
