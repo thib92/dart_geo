@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:geohash/geohash.dart';
 
-import 'package:dart_geo/src/utils.dart';
+import 'package:geo_utils/src/utils.dart';
 
 class GeoHash {
   static const double _PRECISION = 0.000000000001;

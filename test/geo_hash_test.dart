@@ -1,5 +1,5 @@
-import 'package:dart_geo/src/geo_hash.dart';
-import 'package:dart_geo/src/utils.dart';
+import 'package:geo_utils/src/geo_hash.dart';
+import 'package:geo_utils/src/utils.dart';
 import 'package:test/test.dart';
 
 double HARTFORD_LON = -72.727175;
