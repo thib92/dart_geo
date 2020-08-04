@@ -75,7 +75,7 @@ class GeoHash {
   }
 
   static List<double> _createHashWidths() {
-    var d = [];
+    var d = List<double>(_MAX_HASH_LENGTH + 1);
     for (var i = 0; i <= _MAX_HASH_LENGTH; i++) {
       d[i] = _calculateWidthDegrees(i);
     }
@@ -83,7 +83,7 @@ class GeoHash {
   }
 
   static List<double> _createHashHeights() {
-    var d = [];
+    var d = List<double>(_MAX_HASH_LENGTH + 1);
     for (var i = 0; i <= _MAX_HASH_LENGTH; i++) {
       d[i] = _calculateHeightDegrees(i);
     }
@@ -184,7 +184,7 @@ class GeoHash {
   }
 
   static List<String> neighbours(String hash) {
-    var neighbours = [];
+    var neighbours = <String>[];
     var left = adjacentHash(hash, Direction.left);
     var right = adjacentHash(hash, Direction.right);
     neighbours.addAll([left, right]);
