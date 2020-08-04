@@ -8,4 +8,4 @@ This library is a port of the excellent Java implementation [davidmoten/geo](htt
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: http://example.com/issues/replaceme
+[tracker]: https://github.com/thib92/dart_geo/issues
