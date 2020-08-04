@@ -1,4 +1,4 @@
-name: geo-utils
+name: geo_utils
 description: A utility library to handle Geo data in Dart.
 version: 1.0.0
 homepage: https://github.com/thib92/dart_geo
