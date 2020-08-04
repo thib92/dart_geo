@@ -1,4 +1,4 @@
-# Dart Geo
+# Dart Geo Utils
 
 A utility library to handle Geo data in Dart.
 
