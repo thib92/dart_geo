@@ -26,3 +26,10 @@ class LatLong {
 
   LatLong(this.lat, this.long);
 }
+
+class Coverage {
+  final Set<String> hashes;
+  final double ratio;
+
+  Coverage(this.hashes, this.ratio);
+}

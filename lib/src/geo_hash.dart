@@ -236,4 +236,50 @@ class GeoHash {
     return (centreLat - lat).abs() <= heightDegrees(hash.length) / 2 &&
         (_to180(centreLong - lon)).abs() <= widthDegrees(hash.length) / 2;
   }
+
+  static Coverage coverBoundingBox(double topLeftLat, double topLeftLon,
+      double bottomRightLat, double bottomRightLon, int length) {
+    var actualWidthDegreesPerHash = widthDegrees(length);
+    var actualHeightDegreesPerHash = heightDegrees(length);
+
+    var hashes = <String>{};
+
+    var diff = _longitudeDiff(bottomRightLon, topLeftLon);
+    var maxLon = topLeftLon + diff;
+
+    for (var lat = bottomRightLat;
+        lat <= topLeftLat;
+        lat += actualHeightDegreesPerHash) {
+      for (var lon = topLeftLon;
+          lon <= maxLon;
+          lon += actualWidthDegreesPerHash) {
+        hashes.add(Geohash.encode(lat, lon, codeLength: length));
+      }
+    }
+    // ensure have the borders covered
+    for (var lat = bottomRightLat;
+        lat <= topLeftLat;
+        lat += actualHeightDegreesPerHash) {
+      hashes.add(Geohash.encode(lat, maxLon, codeLength: length));
+    }
+    for (var lon = topLeftLon;
+        lon <= maxLon;
+        lon += actualWidthDegreesPerHash) {
+      hashes.add(Geohash.encode(topLeftLat, lon, codeLength: length));
+    }
+    // ensure that the topRight corner is covered
+    hashes.add(Geohash.encode(topLeftLat, maxLon, codeLength: length));
+
+    var areaDegrees = diff * (topLeftLat - bottomRightLat);
+    var coverageAreaDegrees =
+        hashes.length * widthDegrees(length) * heightDegrees(length);
+    var ratio = coverageAreaDegrees / areaDegrees;
+    return Coverage(hashes, ratio);
+  }
+
+  static double _longitudeDiff(double a, double b) {
+    return _to180(
+      _to180(a) - _to180(b),
+    ).abs();
+  }
 }

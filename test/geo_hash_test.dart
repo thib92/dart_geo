@@ -52,4 +52,53 @@ void main() {
       expect(expectedNeighbours, containsAll(neighbours));
     });
   });
+
+  group('coverBoundingBox', () {
+    test('coverBoundingBox', () {
+      var hashes = GeoHash.coverBoundingBox(
+              SCHENECTADY_LAT, SCHENECTADY_LON, HARTFORD_LAT, HARTFORD_LON, 4)
+          .hashes;
+
+      // check corners are in
+      expect(hashes, contains('dre7'));
+      expect(hashes, contains('drkq'));
+      expect(hashes, contains('drs7'));
+      expect(hashes, contains('dr7q'));
+      var expected = <String>{
+        'dre7',
+        'dree',
+        'dreg',
+        'drs5',
+        'drs7',
+        'dre6',
+        'dred',
+        'dref',
+        'drs4',
+        'drs6',
+        'dre3',
+        'dre9',
+        'drec',
+        'drs1',
+        'drs3',
+        'dre2',
+        'dre8',
+        'dreb',
+        'drs0',
+        'drs2',
+        'dr7r',
+        'dr7x',
+        'dr7z',
+        'drkp',
+        'drkr',
+        'dr7q',
+        'dr7w',
+        'dr7y',
+        'drkn',
+        'drkq',
+      };
+
+      expect(hashes, containsAll(expected));
+      expect(hashes.length, equals(expected.length));
+    });
+  });
 }
